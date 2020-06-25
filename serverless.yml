@@ -16,6 +16,7 @@ provider:
     TWITTER_TOKEN_KEY: ${file(./env/env.json):TWITTER_TOKEN_KEY}
     TWITTER_TOKEN_SECRET: ${file(./env/env.json):TWITTER_TOKEN_SECRET}
     THEGAMESDB_KEY: ${file(./env/env.json):THEGAMESDB_KEY}
+    TWITCH_ID: ${file(./env/env.json):TWITCH_ID}
   iamRoleStatements:
     - Effect: Allow
       Action:
