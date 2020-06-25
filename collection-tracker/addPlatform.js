@@ -1,9 +1,7 @@
-//Adds platforms to server-platforms to generate profile tabs
-
 'use strict';
 
 const uuid = require('uuid');
-const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
+const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.endpoint = (event, context, callback) => {
@@ -13,10 +11,9 @@ module.exports.endpoint = (event, context, callback) => {
       id: '1',
       platform: event.platform,
     },
-    ConditionExpression: 'attribute_not_exists(platform)', //puts item if it does not already exist
+    ConditionExpression: 'attribute_not_exists(platform)',
   };
 
-  // Call DynamoDB to add the item to the table
   dynamoDb.put(params, function (err, data) {
     if (err) {
       console.log('Error', err);

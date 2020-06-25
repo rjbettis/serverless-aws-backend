@@ -1,5 +1,5 @@
 'use strict';
-const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
+const AWS = require('aws-sdk');
 const request = require('request');
 const OAuth = require('oauth-1.0a');
 const crypto = require('crypto');

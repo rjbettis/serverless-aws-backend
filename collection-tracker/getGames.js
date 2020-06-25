@@ -1,8 +1,6 @@
-//Gets list of games from specific platform
-
 'use strict';
 
-const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
+const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.endpoint = (event, context, callback) => {
@@ -14,7 +12,6 @@ module.exports.endpoint = (event, context, callback) => {
     },
   };
 
-  // Call DynamoDB to get item from the table
   dynamoDb.scan(params, function (err, data) {
     if (err) {
       callback(err, null);
