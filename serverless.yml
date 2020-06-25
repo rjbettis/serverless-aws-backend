@@ -33,7 +33,7 @@ provider:
 
 functions:
   search-tgdb:
-    handler: searchGamesDb.endpoint
+    handler: collection-tracker/searchGamesDb.endpoint
     events:
       - http:
           path: /search-tgdb
@@ -44,7 +44,7 @@ functions:
             template:
               application/json: '{ "search" : "$input.params(''search'')", "platform" : "$input.params(''platform'')" }'
   add-game:
-    handler: addGame.endpoint
+    handler: collection-tracker/addGame.endpoint
     events:
       - http:
           path: /add-game
@@ -55,7 +55,7 @@ functions:
             template:
               application/json: '{ "name" : "$input.params(''name'')", "cover" : "$input.params(''cover'')", "platform" : "$input.params(''platform'')", "completeness" : "$input.params(''completeness'')", "developer" : "$input.params(''developer'')" }'
   get-games:
-    handler: getGames.endpoint
+    handler: collection-tracker/getGames.endpoint
     events:
       - http:
           path: /get-games
@@ -66,7 +66,7 @@ functions:
             template:
               application/json: '{ "platform" : "$input.params(''platform'')" }'
   add-platform:
-    handler: addPlatform.endpoint
+    handler: collection-tracker/addPlatform.endpoint
     events:
       - http:
           path: /add-platform
@@ -77,7 +77,7 @@ functions:
             template:
               application/json: '{ "platform" : "$input.params(''platform'')" }'
   get-platform-tabs:
-    handler: getPlatformTabs.endpoint
+    handler: collection-tracker/getPlatformTabs.endpoint
     events:
       - http:
           path: /get-platform-tabs
@@ -85,7 +85,7 @@ functions:
           cors: true
           integration: LAMBDA
   delete-game:
-    handler: deleteGame.endpoint
+    handler: collection-tracker/deleteGame.endpoint
     events:
       - http:
           path: /delete-game
@@ -96,13 +96,24 @@ functions:
             template:
               application/json: '{ "sortName" : "$input.params(''sortName'')", "platform" : "$input.params(''platform'')" }'
   get-timeline:
-    handler: getTimeline.endpoint
+    handler: twitter-clone/getTimeline.endpoint
     events:
       - http:
           path: /get-timeline
           method: GET
           cors: true
           integration: LAMBDA
+  verify-channel:
+    handler: race-restreamer/verifyChannel.endpoint
+    events:
+      - http:
+          path: /verify-channel
+          method: GET
+          cors: true
+          integration: LAMBDA
+          request:
+            template:
+              application/json: '{ "channel" : "$input.params(''channel'')" }'
 
 resources:
   Resources:
