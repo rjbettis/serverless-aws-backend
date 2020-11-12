@@ -126,6 +126,17 @@ functions:
           request:
             template:
               application/json: '{ "category" : "$input.params(''category'')" }'
+  twitch-auth:
+    handler: race-restreamer/twitchAuth.endpoint
+    events:
+      - http:
+          path: /twitch-auth
+          method: GET
+          cors: true
+          integration: LAMBDA
+          request:
+            template:
+              application/json: '{ "code" : "$input.params(''code'')" }'
 
 resources:
   Resources:
