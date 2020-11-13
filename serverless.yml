@@ -137,6 +137,17 @@ functions:
           request:
             template:
               application/json: '{ "code" : "$input.params(''code'')" }'
+  twitch-auth2:
+    handler: race-restreamer/twitchAuth2.endpoint
+    events:
+      - http:
+          path: /twitch-auth2
+          method: GET
+          cors: true
+          integration: LAMBDA
+          request:
+            template:
+              application/json: '{ "token" : "$input.params(''token'')" }'
 
 resources:
   Resources:
